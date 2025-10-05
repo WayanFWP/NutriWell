@@ -107,6 +107,8 @@ export default function HomeScreen() {
                     router.push('/bmi-calculator');
                   } else if (feature.title === 'Konsultasi Ahli Gizi') {
                     router.push('/konsultasi-gizi');
+                  } else if (feature.title === 'Analisis Nutrisi') {
+                    router.push('/analisis-nutrisi');
                   } else {
                     console.log(`Navigate to ${feature.title}`);
                   }
@@ -131,6 +133,8 @@ export default function HomeScreen() {
                   router.push('/bmi-calculator');
                 } else if (feature.title === 'Konsultasi Ahli Gizi') {
                   router.push('/konsultasi-gizi');
+                } else if (feature.title === 'Analisis Nutrisi') {
+                  router.push('/analisis-nutrisi');
                 } else {
                   console.log(`Navigate to ${feature.title}`);
                 }
