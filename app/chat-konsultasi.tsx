@@ -28,6 +28,9 @@ export default function ChatKonsultasiScreen() {
   const { footerItems, activeItem } = useFooterNavigation(pathname);
   const { doctorName } = useLocalSearchParams<{ doctorName: string }>();
   
+  // Simulate doctor status (in real app, this would come from props or API)
+  const doctorStatus = 'Online'; // or 'Sibuk' or 'Offline'
+  
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -103,9 +106,24 @@ export default function ChatKonsultasiScreen() {
               source={require('@/assets/Assets-images/Speech_idle.png')}
               style={styles.doctorAvatar}
             />
-            <Text style={styles.doctorName}>
-              {doctorName || 'Dr. Budi Setiawan, M. Gizi, Sp.G.K'}
-            </Text>
+            <View style={styles.doctorDetails}>
+              <Text style={styles.doctorName}>
+                {doctorName || 'Dr. Budi Setiawan, M. Gizi, Sp.G.K'}
+              </Text>
+              <View style={[
+                styles.statusBadge,
+                doctorStatus === 'Online' ? styles.statusOnline :
+                doctorStatus === 'Sibuk' ? styles.statusBusy : styles.statusOffline
+              ]}>
+                <Text style={[
+                  styles.statusText,
+                  doctorStatus === 'Online' ? styles.statusTextOnline :
+                  doctorStatus === 'Sibuk' ? styles.statusTextBusy : styles.statusTextOffline
+                ]}>
+                  {doctorStatus}
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
 
@@ -200,11 +218,42 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginRight: 12,
   },
+  doctorDetails: {
+    flex: 1,
+  },
   doctorName: {
     fontSize: 16,
     fontWeight: 'bold',
     color: 'white',
-    flex: 1,
+    marginBottom: 4,
+  },
+  statusBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 10,
+    alignSelf: 'flex-start',
+  },
+  statusOnline: {
+    backgroundColor: 'rgba(76, 175, 80, 0.2)',
+  },
+  statusBusy: {
+    backgroundColor: 'rgba(255, 152, 0, 0.2)',
+  },
+  statusOffline: {
+    backgroundColor: 'rgba(158, 158, 158, 0.2)',
+  },
+  statusText: {
+    fontSize: 10,
+    fontWeight: '600',
+  },
+  statusTextOnline: {
+    color: '#4CAF50',
+  },
+  statusTextBusy: {
+    color: '#FF9800',
+  },
+  statusTextOffline: {
+    color: '#9E9E9E',
   },
   chatContainer: {
     flex: 1,

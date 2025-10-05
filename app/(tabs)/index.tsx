@@ -109,6 +109,8 @@ export default function HomeScreen() {
                     router.push('/konsultasi-gizi');
                   } else if (feature.title === 'Analisis Nutrisi') {
                     router.push('/analisis-nutrisi');
+                  } else if (feature.title === 'Rekomendasi Resep') {
+                    router.push('/rekomendasi-resep');
                   } else {
                     console.log(`Navigate to ${feature.title}`);
                   }
@@ -135,6 +137,8 @@ export default function HomeScreen() {
                   router.push('/konsultasi-gizi');
                 } else if (feature.title === 'Analisis Nutrisi') {
                   router.push('/analisis-nutrisi');
+                } else if (feature.title === 'Rekomendasi Cerdas') {
+                  router.push('/rekomendasi-resep');
                 } else {
                   console.log(`Navigate to ${feature.title}`);
                 }

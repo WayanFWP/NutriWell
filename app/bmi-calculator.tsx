@@ -9,6 +9,7 @@ import { router, usePathname } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import {
+    Image,
   Platform,
   SafeAreaView,
   ScrollView,
@@ -99,7 +100,7 @@ export default function BMICalculatorScreen() {
           <View style={styles.calculatorCard}>
             <View style={styles.cardHeader}>
               <View style={styles.iconContainer}>
-                <Text style={styles.iconText}>⚖️</Text>
+                <Image source={require('@/assets/Feature/BMI_Calculator.png')} style={styles.iconImage} />
               </View>
               <Text style={styles.cardTitle}>BMI Calculator</Text>
             </View>
@@ -286,6 +287,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
+  },
+  iconImage: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
   },
   iconText: {
     fontSize: 20,

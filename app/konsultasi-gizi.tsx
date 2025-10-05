@@ -6,13 +6,13 @@ import { router, usePathname } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import {
-    Image,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 
 interface Doctor {
@@ -181,9 +181,17 @@ export default function KonsultasiGiziScreen() {
                     
                     <View style={styles.doctorDetails}>
                       <Text style={styles.doctorName}>{doctor.name}</Text>
-                      <View style={styles.statusContainer}>
-                        <View style={[styles.statusDot, { backgroundColor: getStatusColor(doctor.status) }]} />
-                        <Text style={[styles.statusText, { color: getStatusColor(doctor.status) }]}>
+                      <Text style={styles.doctorTitle}>{doctor.title}</Text>
+                      <View style={[
+                        styles.statusBadge,
+                        doctor.status === 'Online' ? styles.statusOnline :
+                        doctor.status === 'Sibuk' ? styles.statusBusy : styles.statusOffline
+                      ]}>
+                        <Text style={[
+                          styles.statusText,
+                          doctor.status === 'Online' ? styles.statusTextOnline :
+                          doctor.status === 'Sibuk' ? styles.statusTextBusy : styles.statusTextOffline
+                        ]}>
                           {doctor.status}
                         </Text>
                       </View>
@@ -373,24 +381,43 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   doctorName: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: 'bold',
     color: '#333',
-    marginBottom: 5,
+    marginBottom: 4,
   },
-  statusContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
+  doctorTitle: {
+    fontSize: 13,
+    color: '#777',
+    marginBottom: 8,
   },
-  statusDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+  statusBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+  },
+  statusOnline: {
+    backgroundColor: '#E8F5E8',
+  },
+  statusBusy: {
+    backgroundColor: '#FFF3E0',
+  },
+  statusOffline: {
+    backgroundColor: '#F5F5F5',
   },
   statusText: {
-    fontSize: 12,
-    fontWeight: '500',
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  statusTextOnline: {
+    color: '#4CAF50',
+  },
+  statusTextBusy: {
+    color: '#FF9800',
+  },
+  statusTextOffline: {
+    color: '#9E9E9E',
   },
   doctorPrice: {
     fontSize: 16,

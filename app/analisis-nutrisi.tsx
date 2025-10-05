@@ -6,6 +6,7 @@ import { router, usePathname } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
+    Image,
     SafeAreaView,
     ScrollView,
     StyleSheet,
@@ -44,25 +45,7 @@ export default function AnalisisNutrisiScreen() {
           <View style={styles.mainCard}>
             {/* Header Section */}
             <View style={styles.headerSection}>
-              <View style={styles.iconContainer}>
-                <View style={styles.nutritionIcon}>
-                  {/* Nutrition Analysis Icon */}
-                  <View style={styles.chartBars}>
-                    <View style={[styles.bar, styles.bar1]} />
-                    <View style={[styles.bar, styles.bar2]} />
-                    <View style={[styles.bar, styles.bar3]} />
-                    <View style={[styles.bar, styles.bar4]} />
-                  </View>
-                  <View style={styles.foodItems}>
-                    <View style={styles.apple} />
-                    <View style={styles.carrot} />
-                    <View style={styles.magnifyingGlass}>
-                      <Ionicons name="search" size={16} color="white" />
-                    </View>
-                  </View>
-                </View>
-              </View>
-              
+              <Image source={require('@/assets/Feature/Analisis_Gizi.png')}/>
               <Text style={styles.title}>Analisis Nutrisi</Text>
               <Text style={styles.subtitle}>
                 Masukkan makanan dan bahan untuk mendapatkan analisis gizi, 
@@ -80,10 +63,7 @@ export default function AnalisisNutrisiScreen() {
               >
                 <View style={styles.featureIcon}>
                   <View style={styles.chatBoxIcon}>
-                    <Ionicons name="chatbubbles" size={24} color="#4CAF50" />
-                    <View style={styles.analysisSymbol}>
-                      <Text style={styles.analysisText}>%</Text>
-                    </View>
+                    <Image source={require('@/assets/Feature/Chatbot_analizer.png')} style={styles.chatBoxIcon} />
                   </View>
                 </View>
                 
@@ -103,13 +83,7 @@ export default function AnalisisNutrisiScreen() {
               >
                 <View style={styles.featureIcon}>
                   <View style={styles.nutriScanIcon}>
-                    <Ionicons name="camera" size={24} color="white" />
-                    <View style={styles.scanFrame}>
-                      <View style={styles.cornerTL} />
-                      <View style={styles.cornerTR} />
-                      <View style={styles.cornerBL} />
-                      <View style={styles.cornerBR} />
-                    </View>
+                    <Image source={require('@/assets/Feature/AR_analizer.png')} style={styles.nutriScanIcon} />
                   </View>
                 </View>
                 
@@ -285,7 +259,7 @@ const styles = StyleSheet.create({
   nutriScanIcon: {
     width: 60,
     height: 60,
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#f5fdf5ff',
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
