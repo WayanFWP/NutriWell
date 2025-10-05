@@ -3,6 +3,7 @@ import { Dropdown } from '@/components/dropdown';
 import { CheckboxField, FormField } from '@/components/form-fields';
 import ProfileCard from '@/components/profile-card';
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import {
@@ -65,7 +66,7 @@ export default function ProfileScreen() {
         
         {/* Header */}
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
             <Ionicons name="chevron-back" size={24} color="white" />
             <Text style={styles.backText}>Back</Text>
           </TouchableOpacity>

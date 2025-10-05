@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    paddingBottom: 100, // Account for footer navigation
   },
   title: {
     fontSize: 28,

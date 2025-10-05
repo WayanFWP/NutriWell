@@ -1,13 +1,16 @@
+import { FooterItem } from '@/utils/footer-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-interface FooterItem {
-  id: string;
-  title: string;
-  icon: keyof typeof Ionicons.glyphMap;
-  onPress: () => void;
-}
+// Image mapping for footer assets
+const footerImages = {
+  'Home.png': require('@/assets/Footer/Home.png'),
+  'trending.png': require('@/assets/Footer/trending.png'),
+  'Profile.png': require('@/assets/Footer/Profile.png'),
+  'History.png': require('@/assets/Footer/History.png'),
+  'Settings.png': require('@/assets/Footer/Settings.png'),
+};
 
 interface FooterNavigationProps {
   items: FooterItem[];
@@ -23,11 +26,23 @@ export default function FooterNavigation({ items, activeItem }: FooterNavigation
           style={styles.footerItem}
           onPress={item.onPress}
         >
-          <Ionicons
-            name={item.icon}
-            size={24}
-            color={activeItem === item.id ? '#2E8B8B' : '#9CA3AF'}
-          />
+          {item.image ? (
+            <Image
+              source={footerImages[item.image as keyof typeof footerImages]}
+              style={[
+                styles.footerImage,
+                { 
+                  tintColor: activeItem === item.id ? '#2E8B8B' : '#9CA3AF' 
+                }
+              ]}
+            />
+          ) : (
+            <Ionicons
+              name={item.icon!}
+              size={24}
+              color={activeItem === item.id ? '#2E8B8B' : '#9CA3AF'}
+            />
+          )}
           <Text
             style={[
               styles.footerText,
@@ -67,5 +82,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     marginTop: 4,
+  },
+  footerImage: {
+    width: 24,
+    height: 24,
   },
 });

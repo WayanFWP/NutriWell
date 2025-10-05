@@ -1,8 +1,9 @@
 import BackgroundWrapper from '@/components/background-wrapper';
 import { FeatureCard, TopFeatureCard } from '@/components/feature-cards';
+import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
   const featuresData = [
@@ -65,7 +66,11 @@ export default function HomeScreen() {
           <View style={styles.headerContent}>
             <View style={styles.logoContainer}>
               <View style={styles.heartIcon}>
-                <Text style={styles.heartText}>💚</Text>
+                {/*       image: require('@/assets/Feature/resep_trending.png'), */}
+                <Image
+                  source={require('@/assets/icons/Icon.png')}
+                  style={styles.heartImage}
+                />
               </View>
             </View>
             <View style={styles.profileContainer}>
@@ -98,8 +103,13 @@ export default function HomeScreen() {
                 title={feature.title}
                 image={feature.image}
                 onPress={() => {
-                  // TODO: Navigate to feature screen
-                  console.log(`Navigate to ${feature.title}`);
+                  if (feature.title === 'BMI Calculator') {
+                    router.push('/bmi-calculator');
+                  } else if (feature.title === 'Konsultasi Ahli Gizi') {
+                    router.push('/konsultasi-gizi');
+                  } else {
+                    console.log(`Navigate to ${feature.title}`);
+                  }
                 }}
               />
             ))}
@@ -117,8 +127,13 @@ export default function HomeScreen() {
               description={feature.description}
               image={feature.image}
               onPress={() => {
-                // TODO: Navigate to feature screen
-                console.log(`Navigate to ${feature.title}`);
+                if (feature.title === 'BMI Calculator') {
+                  router.push('/bmi-calculator');
+                } else if (feature.title === 'Konsultasi Ahli Gizi') {
+                  router.push('/konsultasi-gizi');
+                } else {
+                  console.log(`Navigate to ${feature.title}`);
+                }
               }}
             />
           ))}
@@ -153,15 +168,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   heartIcon: {
-    width: 40,
-    height: 40,
+    width: 52,
+    height: 52,
     backgroundColor: '#FFE4E1',
-    borderRadius: 20,
+    borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
   heartText: {
     fontSize: 20,
+  },
+  heartImage: {
+    width: 42,
+    height: 42,
   },
   profileContainer: {
     flexDirection: 'row',
